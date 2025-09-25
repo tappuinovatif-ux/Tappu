@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tappu - Daftar Kelas</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1><i class="fas fa-graduation-cap"></i> Tappu</h1>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="landing.html" class="nav-link">Beranda</a></li>
+                <li><a href="kelas.html" class="nav-link active">Kelas</a></li>
+                <li><a href="absensi.html" class="nav-link">Absensi</a></li>
+                <li><a href="#" id="loginBtn" class="nav-link">Login</a></li>
+                <li><a href="#" id="logoutBtn" class="nav-link" style="display: none;">Logout</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- User Info -->
+    <div id="userInfo" class="user-info" style="display: none;">
+        <div class="container">
+            <p>Selamat datang, <span id="currentUser"></span> (<span id="currentUserType"></span>)</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <section class="section-content">
+            <div class="container">
+                <h2>Daftar Kelas</h2>
+                <div class="kelas-grid">
+                    <div class="kelas-card" data-kelas="matematika">
+                        <h3>Matematika</h3>
+                        <p>Kelas X - Semester 1</p>
+                        <div class="kelas-info">
+                            <span><i class="fas fa-users"></i> 30 Siswa</span>
+                            <span><i class="fas fa-book"></i> 12 Materi</span>
+                        </div>
+                        <button class="btn-secondary masuk-kelas-btn" onclick="window.location.href='matematika.html'">Masuk Kelas</button>
+                    </div>
+                    <div class="kelas-card" data-kelas="fisika">
+                        <h3>Fisika</h3>
+                        <p>Kelas X - Semester 1</p>
+                        <div class="kelas-info">
+                            <span><i class="fas fa-users"></i> 28 Siswa</span>
+                            <span><i class="fas fa-book"></i> 10 Materi</span>
+                        </div>
+                        <button class="btn-secondary masuk-kelas-btn" onclick="window.location.href='fisika.html'">Masuk Kelas</button>
+                    </div>
+                    <div class="kelas-card" data-kelas="kimia">
+                        <h3>Kimia</h3>
+                        <p>Kelas X - Semester 1</p>
+                        <div class="kelas-info">
+                            <span><i class="fas fa-users"></i> 25 Siswa</span>
+                            <span><i class="fas fa-book"></i> 8 Materi</span>
+                        </div>
+                        <button class="btn-secondary masuk-kelas-btn" onclick="window.location.href='kimia.html'">Masuk Kelas</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login ke Tappu</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+</body>
+</html>

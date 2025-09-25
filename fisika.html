@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tappu - Kelas Fisika</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://apis.google.com/js/api.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1><i class="fas fa-graduation-cap"></i> Tappu</h1>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="beranda.html" class="nav-link">Beranda</a></li>
+                <li><a href="kelas.html" class="nav-link active">Kelas</a></li>
+                <li><a href="absensi.html" class="nav-link">Absensi</a></li>
+                <li><a href="#" id="loginBtn" class="nav-link">Login</a></li>
+                <li><a href="#" id="logoutBtn" class="nav-link" style="display: none;">Logout</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- User Info -->
+    <div id="userInfo" class="user-info" style="display: none;">
+        <div class="container">
+            <p>Selamat datang, <span id="currentUser"></span> (<span id="currentUserType"></span>)</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <section class="section-content">
+            <div class="container">
+                <div class="kelas-header">
+                    <button class="btn-back" onclick="window.location.href='kelas.html'">
+                        <i class="fas fa-arrow-left"></i> Kembali ke Daftar Kelas
+                    </button>
+                    <h2>Fisika - Kelas X</h2>
+                </div>
+                
+                <div class="kelas-nav">
+                    <button class="tab-btn active" data-tab="rangkuman-materi">Rangkuman Materi</button>
+                    <button class="tab-btn" data-tab="tugas">Tugas</button>
+                </div>
+
+                <!-- Rangkuman Materi -->
+                <div id="rangkuman-materi" class="tab-content active">
+                    <div class="materi-header">
+                        <h3>Rangkuman Materi</h3>
+                    </div>
+                    <div class="materi-list" id="materiList">
+                        <div class="materi-item">
+                            <div class="materi-icon">
+                                <i class="fas fa-file-powerpoint"></i>
+                            </div>
+                            <div class="materi-info">
+                                <h4>Hukum Newton</h4>
+                                <p>Fisika - Uploaded 1 hari yang lalu</p>
+                            </div>
+                            <div class="materi-actions">
+                                <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon"><i class="fas fa-download"></i></button>
+                            </div>
+                        </div>
+                        <div class="materi-item">
+                            <div class="materi-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="materi-info">
+                                <h4>Gerak Lurus</h4>
+                                <p>Fisika - Uploaded 3 hari yang lalu</p>
+                            </div>
+                            <div class="materi-actions">
+                                <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon"><i class="fas fa-download"></i></button>
+                            </div>
+                        </div>
+                        <div class="materi-item">
+                            <div class="materi-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="materi-info">
+                                <h4>Energi dan Usaha</h4>
+                                <p>Fisika - Uploaded 1 minggu yang lalu</p>
+                            </div>
+                            <div class="materi-actions">
+                                <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon"><i class="fas fa-download"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tugas -->
+                <div id="tugas" class="tab-content">
+                    <div class="tugas-header">
+                        <h3>Manajemen Tugas</h3>
+                        <button id="addTugas" class="btn-primary" style="display: none;">
+                            <i class="fas fa-plus"></i> Tambah Tugas
+                        </button>
+                    </div>
+                    <div class="tugas-list" id="tugasList">
+                        <div class="tugas-item">
+                            <div class="tugas-info">
+                                <h4>Laporan Praktikum Newton</h4>
+                                <p>Deadline: 28 September 2024</p>
+                                <span class="status pending">Pending</span>
+                            </div>
+                            <div class="tugas-actions">
+                                <button class="btn-secondary">Lihat Detail</button>
+                                <button class="btn-delete" style="display: none;"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="tugas-item">
+                            <div class="tugas-info">
+                                <h4>Soal Gerak Lurus</h4>
+                                <p>Deadline: 2 Oktober 2024</p>
+                                <span class="status pending">Pending</span>
+                            </div>
+                            <div class="tugas-actions">
+                                <button class="btn-secondary">Lihat Detail</button>
+                                <button class="btn-delete" style="display: none;"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="tugas-item">
+                            <div class="tugas-info">
+                                <h4>Presentasi Energi</h4>
+                                <p>Deadline: 10 Oktober 2024</p>
+                                <span class="status pending">Pending</span>
+                            </div>
+                            <div class="tugas-actions">
+                                <button class="btn-secondary">Lihat Detail</button>
+                                <button class="btn-delete" style="display: none;"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login ke Tappu</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Enhanced Add Tugas Modal -->
+    <div id="tugasModal" class="modal enhanced-modal">
+        <div class="modal-content enhanced-modal-content">
+            <span class="close">&times;</span>
+            <h2>Tambah Tugas Baru</h2>
+            <form id="tugasForm">
+                <div class="form-group">
+                    <label for="tugasTitle">Judul Tugas:</label>
+                    <input type="text" id="tugasTitle" name="tugasTitle" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tugasDeadline">Deadline:</label>
+                    <input type="datetime-local" id="tugasDeadline" name="tugasDeadline" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tugasDescription">Deskripsi Tugas:</label>
+                    <div class="rich-editor">
+                        <div class="editor-toolbar">
+                            <button type="button" class="editor-btn" onclick="formatText('bold')" title="Bold">
+                                <i class="fas fa-bold"></i>
+                            </button>
+                            <button type="button" class="editor-btn" onclick="formatText('italic')" title="Italic">
+                                <i class="fas fa-italic"></i>
+                            </button>
+                            <button type="button" class="editor-btn" onclick="formatText('underline')" title="Underline">
+                                <i class="fas fa-underline"></i>
+                            </button>
+                            <button type="button" class="editor-btn" onclick="addImportantNote()" title="Important Note">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </button>
+                        </div>
+                        <div id="tugasDescription" class="rich-text-editor" contenteditable="true" placeholder="Masukkan deskripsi tugas di sini..."></div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-column">
+                        <label>Gambar:</label>
+                        <div class="content-section">
+                            <input type="file" id="tugasImages" accept="image/*" multiple style="display: none;">
+                            <div class="upload-zone small" onclick="document.getElementById('tugasImages').click()">
+                                <i class="fas fa-image"></i>
+                                <p>Tambah Gambar</p>
+                            </div>
+                            <div id="imagePreview" class="preview-container"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-column">
+                        <label>Tabel:</label>
+                        <div class="content-section">
+                            <button type="button" class="content-btn" onclick="insertTable()">
+                                <i class="fas fa-table"></i>
+                                <span>Tambah Tabel</span>
+                            </button>
+                            <div id="tablePreview" class="preview-container">
+                                <p class="preview-text">Tabel akan muncul di deskripsi tugas</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-column">
+                        <label>File:</label>
+                        <div class="content-section">
+                            <input type="file" id="tugasAttachments" multiple style="display: none;">
+                            <div class="upload-zone small" onclick="document.getElementById('tugasAttachments').click()">
+                                <i class="fas fa-paperclip"></i>
+                                <p>Tambah File</p>
+                            </div>
+                            <div id="attachmentPreview" class="preview-container"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal()">Batal</button>
+                    <button type="submit" class="btn-primary">Tambah Tugas</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script src="kelas-detail.js"></script>
+</body>
+</html>

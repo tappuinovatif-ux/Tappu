@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tappu - Detail Tugas</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1><i class="fas fa-graduation-cap"></i> Tappu</h1>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="beranda.html" class="nav-link">Beranda</a></li>
+                <li><a href="kelas.html" class="nav-link active">Kelas</a></li>
+                <li><a href="absensi.html" class="nav-link">Absensi</a></li>
+                <li><a href="#" id="loginBtn" class="nav-link">Login</a></li>
+                <li><a href="#" id="logoutBtn" class="nav-link" style="display: none;">Logout</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- User Info -->
+    <div id="userInfo" class="user-info" style="display: none;">
+        <div class="container">
+            <p>Selamat datang, <span id="currentUser"></span> (<span id="currentUserType"></span>)</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <section class="section-content">
+            <div class="container">
+                <div class="tugas-detail-header">
+                    <button class="btn-back" onclick="history.back()">
+                        <i class="fas fa-arrow-left"></i> Kembali
+                    </button>
+                    <h2 id="tugasTitle">Detail Tugas</h2>
+                </div>
+                
+                <div class="tugas-detail-content">
+                    <div class="tugas-info-card">
+                        <div class="tugas-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-book"></i>
+                                <span>Mata Pelajaran: <strong id="tugasSubject">Matematika</strong></span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Deadline: <strong id="tugasDeadline">25 September 2024, 23:59</strong></span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-user"></i>
+                                <span>Guru: <strong id="tugasTeacher">Pak Budi</strong></span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Status: <span id="tugasStatus" class="status pending">Pending</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tugas-description-card">
+                        <h3><i class="fas fa-file-text"></i> Deskripsi Tugas</h3>
+                        <div id="tugasDescription">
+                            <p>Kerjakan soal-soal aljabar linear berikut ini:</p>
+                            <ol>
+                                <li>Tentukan determinan dari matriks A = [[2, 3], [1, 4]]</li>
+                                <li>Selesaikan sistem persamaan linear:
+                                    <br>2x + 3y = 7
+                                    <br>x + 4y = 6
+                                </li>
+                                <li>Cari invers dari matriks B = [[1, 2], [3, 4]]</li>
+                            </ol>
+                            <p><strong>Catatan:</strong> Tugas dikerjakan di kertas dan difoto, kemudian upload dalam format PDF atau JPG.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="tugas-submission-card" id="submissionCard">
+                        <h3><i class="fas fa-upload"></i> Pengumpulan Tugas</h3>
+                        <div class="submission-area">
+                            <div class="upload-zone" id="uploadZone">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & drop file di sini atau klik untuk memilih file</p>
+                                <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" multiple style="display: none;">
+                                <button class="btn-primary" onclick="document.getElementById('fileInput').click()">
+                                    <i class="fas fa-plus"></i> Pilih File
+                                </button>
+                            </div>
+                            
+                            <div class="uploaded-files" id="uploadedFiles" style="display: none;">
+                                <h4>File yang akan dikumpulkan:</h4>
+                                <div class="file-preview-list" id="filePreviewList"></div>
+                                <div class="submission-actions">
+                                    <button class="btn-primary" id="submitBtn">
+                                        <i class="fas fa-paper-plane"></i> Kumpulkan Tugas
+                                    </button>
+                                    <button class="btn-secondary" id="cancelBtn">
+                                        <i class="fas fa-times"></i> Batal
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tugas-history-card" id="historyCard" style="display: none;">
+                        <h3><i class="fas fa-history"></i> Riwayat Pengumpulan</h3>
+                        <div class="history-list" id="historyList">
+                            <!-- History items will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login ke Tappu</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script src="tugas-detail.js"></script>
+</body>
+</html>
